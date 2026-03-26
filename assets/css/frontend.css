@@ -1,0 +1,533 @@
+/* ==========================================================================
+   Rating System Pro – Frontend Styles
+   ========================================================================== */
+
+:root {
+  --rsp-star:       #f5a623;
+  --rsp-bar:        #f5a623;
+  --rsp-badge-bg:   #27ae60;
+  --rsp-badge-text: #ffffff;
+  --rsp-text:       #1a1a2e;
+  --rsp-muted:      #6b7280;
+  --rsp-track:      #e5e7eb;
+  --rsp-radius:     12px;
+  --rsp-shadow:     0 4px 24px rgba(0,0,0,.08);
+  --rsp-transition: 1.2s cubic-bezier(.4,0,.2,1);
+}
+
+/* --------------------------------------------------------------------------
+   Mini summary – under product title (clickable)
+   -------------------------------------------------------------------------- */
+
+body .rsp-mini-summary {
+  /* Critical Reset */
+  all: initial !important; 
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important; /* Center content internally */
+  flex-wrap: wrap !important;
+  gap: .45em !important;
+  cursor: pointer !important;
+  pointer-events: all !important;
+  margin: .35em 0 .75em !important;
+  padding: .35em .7em !important;
+  border-radius: 8px !important;
+  transition: all .2s ease-in-out !important;
+  width: fit-content !important;
+  clear: both !important;
+  user-select: none !important;
+  -webkit-user-select: none !important;
+  position: relative !important;
+  z-index: 9 !important;
+  background: #fbfbfb !important;
+  border: 1px solid rgba(0,0,0,.08) !important;
+  line-height: 1 !important;
+  text-decoration: none !important;
+  box-sizing: border-box !important;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
+  float: none !important;
+  vertical-align: middle !important;
+}
+
+/* Center summary itself in shop loops */
+.woocommerce ul.products li.product .rsp-mini-summary,
+.wc-block-product .rsp-mini-summary {
+  display: flex !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+body .rsp-mini-summary:hover {
+  opacity: 1 !important;
+  background: #ffffff !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 4px 12px rgba(0,0,0,.1) !important;
+  border-color: var(--rsp-star) !important;
+}
+
+.rsp-mini-summary:focus-visible {
+  outline: 2px solid var(--rsp-star);
+  outline-offset: 3px;
+}
+
+.rsp-mini-average {
+  font-size: 1.05rem !important;
+  font-weight: 700 !important;
+  color: var(--rsp-text) !important;
+  letter-spacing: -.02em !important;
+  line-height: 1 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.rsp-mini-stars .rsp-stars {
+  font-size: 1.15rem !important;
+  line-height: 1 !important;
+  display: flex !important;
+  align-items: center !important;
+}
+
+body .rsp-mini-count {
+  font-size: .88rem !important;
+  color: var(--rsp-muted) !important;
+  font-weight: 500 !important;
+  margin-left: .15em !important;
+  text-decoration: none !important;
+  line-height: 1 !important;
+}
+
+body .rsp-mini-arrow {
+  color: var(--rsp-muted) !important;
+  font-size: 1rem !important;
+  margin-left: .1em !important;
+  opacity: .5 !important;
+  line-height: 1 !important;
+  display: inline-block !important;
+}
+
+.rsp-badge--inline {
+  margin-left: .3em;
+  font-size: .7rem;
+  padding: .25em .7em;
+}
+
+
+
+.rsp-widget {
+  margin: 1.5em 0 2em;
+  font-family: inherit;
+}
+
+/* Shop Loop Badge Overlay (Sale-style) */
+.woocommerce ul.products li.product,
+.woocommerce-loop-product,
+.woocommerce-loop-product__link,
+.wc-block-product,
+.product-thumbnail,
+.product-inner {
+  position: relative !important;
+}
+
+.rsp-shop-badge-overlay {
+  position: absolute !important;
+  top: 10px !important;
+  left: 50% !important;
+  transform: translateX(-50%) !important;
+  z-index: 100 !important;
+  pointer-events: none !important;
+  line-height: 1 !important;
+}
+
+.rsp-shop-badge-overlay .rsp-badge {
+  display: inline-flex !important;
+  box-shadow: 0 4px 15px rgba(0,0,0,.2) !important;
+  white-space: nowrap !important;
+  border: 1px solid rgba(255,255,255,.4) !important;
+}
+
+.rsp-widget-inner {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  align-items: flex-start;
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: var(--rsp-radius);
+  padding: 1.75rem 2rem;
+  box-shadow: var(--rsp-shadow);
+}
+
+/* --------------------------------------------------------------------------
+   Top Rated badge
+   -------------------------------------------------------------------------- */
+
+.rsp-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: .4em;
+  background: var(--rsp-badge-bg);
+  color: var(--rsp-badge-text);
+  font-size: .78rem;
+  font-weight: 700;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  padding: .35em .85em;
+  border-radius: 999px;
+  margin-bottom: .75rem;
+  box-shadow: 0 2px 10px color-mix(in srgb, var(--rsp-badge-bg) 40%, transparent);
+  animation: rsp-badge-pop .5s cubic-bezier(.34,1.56,.64,1) both;
+}
+
+@keyframes rsp-badge-pop {
+  from { transform: scale(.6); opacity: 0; }
+  to   { transform: scale(1);  opacity: 1; }
+}
+
+.rsp-badge-icon {
+  font-size: .9em;
+}
+
+/* --------------------------------------------------------------------------
+   Average rating block
+   -------------------------------------------------------------------------- */
+
+.rsp-average-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-width: 130px;
+  flex-shrink: 0;
+  text-align: center;
+  padding-right: 1.5rem;
+  border-right: 1px solid #e5e7eb;
+}
+
+.rsp-average-number {
+  font-size: 3.5rem;
+  font-weight: 800;
+  line-height: 1;
+  color: var(--rsp-text);
+  letter-spacing: -2px;
+  font-variant-numeric: tabular-nums;
+}
+
+.rsp-average-stars {
+  margin: .4rem 0 .2rem;
+}
+
+.rsp-average-label {
+  font-size: .82rem;
+  color: var(--rsp-muted);
+  margin-top: .25rem;
+}
+
+.rsp-average-outof {
+  font-size: .75rem;
+  color: var(--rsp-muted);
+  font-style: italic;
+}
+
+/* --------------------------------------------------------------------------
+   Breakdown bars
+   -------------------------------------------------------------------------- */
+
+.rsp-breakdown {
+  flex: 1;
+  min-width: 180px;
+  display: flex;
+  flex-direction: column;
+  gap: .55rem;
+}
+
+.rsp-breakdown-row {
+  display: grid;
+  grid-template-columns: 36px 1fr 36px;
+  align-items: center;
+  gap: .6rem;
+}
+
+.rsp-breakdown-label {
+  font-size: .82rem;
+  font-weight: 600;
+  color: var(--rsp-text);
+  text-align: right;
+  white-space: nowrap;
+}
+
+.rsp-bar-track {
+  height: 10px;
+  background: var(--rsp-track);
+  border-radius: 999px;
+  overflow: hidden;
+  position: relative;
+}
+
+.rsp-bar-fill {
+  height: 100%;
+  background: var(--rsp-bar);
+  border-radius: 999px;
+  width: 0%;
+  transition: width var(--rsp-transition);
+  position: relative;
+}
+
+.rsp-bar-fill::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent 60%, rgba(255,255,255,.3) 100%);
+  border-radius: inherit;
+}
+
+.rsp-breakdown-count {
+  font-size: .78rem;
+  color: var(--rsp-muted);
+  text-align: left;
+  font-variant-numeric: tabular-nums;
+}
+
+/* --------------------------------------------------------------------------
+   Stars
+   -------------------------------------------------------------------------- */
+
+.rsp-stars {
+  display: inline-flex;
+  gap: 1px;
+  font-size: 1.1rem;
+}
+
+.rsp-star {
+  color: var(--rsp-track);
+  transition: color .2s;
+}
+
+.rsp-star--full {
+  color: var(--rsp-star);
+}
+
+.rsp-star--empty {
+  color: var(--rsp-track);
+}
+
+/* Partial star using clip-path */
+.rsp-star--partial {
+  position: relative;
+  color: var(--rsp-track);
+}
+
+.rsp-star--partial::before {
+  content: '★';
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: var(--rsp-star);
+  clip-path: inset(0 calc(100% - var(--fill)) 0 0);
+  width: 100%;
+}
+
+/* --------------------------------------------------------------------------
+   Inline rating (loop / product header)
+   -------------------------------------------------------------------------- */
+
+.rsp-inline-rating {
+  display: inline-flex;
+  align-items: center;
+  gap: .3em;
+}
+
+.rsp-inline-count {
+  font-size: .82em;
+  color: var(--rsp-muted);
+}
+
+/* --------------------------------------------------------------------------
+   Responsive
+   -------------------------------------------------------------------------- */
+
+@media (max-width: 480px) {
+  .rsp-widget-inner {
+    flex-direction: column;
+    padding: 1.25rem;
+  }
+
+  .rsp-average-block {
+    width: 100%;
+    padding-right: 0;
+    border-right: none;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #e5e7eb;
+    flex-direction: row;
+    gap: 1rem;
+    justify-content: flex-start;
+    text-align: left;
+  }
+
+  .rsp-average-number {
+    font-size: 2.8rem;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   WooCommerce review form (stars-only mode)
+   -------------------------------------------------------------------------- */
+
+.rsp-stars-only-notice {
+  font-size: .85rem;
+  color: var(--rsp-muted);
+  margin-bottom: 1rem;
+  font-style: italic;
+}
+
+/* ==========================================================================
+   Rating Form – inside Ratings tab
+   ========================================================================== */
+
+.rsp-tab-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+/* ── Form wrapper ─────────────────────────────────────────────────────────── */
+
+.rsp-rate-form-wrap {
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: var(--rsp-radius);
+  padding: 1.75rem 2rem;
+  box-shadow: var(--rsp-shadow);
+}
+
+.rsp-rate-form-title {
+  font-size: 1.05rem;
+  font-weight: 700;
+  margin: 0 0 1.25rem;
+  color: var(--rsp-text);
+  border-bottom: 1px solid #f0f0f0;
+  padding-bottom: .75rem;
+}
+
+/* ── Star picker (CSS-only reverse trick) ─────────────────────────────────── */
+
+.rsp-star-picker {
+  display: flex;
+  flex-direction: row-reverse;  /* reverse so CSS ~ sibling selector works */
+  justify-content: flex-end;
+  gap: .2rem;
+  margin-bottom: .75rem;
+}
+
+.rsp-star-radio {
+  display: none;
+}
+
+.rsp-star-picker label {
+  font-size: 2.4rem;
+  color: #d1d5db;
+  cursor: pointer;
+  transition: color .15s, transform .12s;
+  line-height: 1;
+  user-select: none;
+}
+
+/* Hover: colour this star and all stars to the right (higher value) */
+.rsp-star-picker label:hover,
+.rsp-star-picker label:hover ~ label {
+  color: var(--rsp-star);
+  transform: scale(1.15);
+}
+
+/* Selected: fill from chosen star rightward */
+.rsp-star-radio:checked ~ label {
+  color: var(--rsp-star);
+}
+
+/* ── Selected label ───────────────────────────────────────────────────────── */
+
+.rsp-selected-label {
+  font-size: .85rem;
+  color: var(--rsp-muted);
+  min-height: 1.2em;
+  margin-bottom: .75rem;
+}
+
+/* ── Submit button ────────────────────────────────────────────────────────── */
+
+.rsp-submit-btn {
+  display: inline-block;
+  background: var(--rsp-star);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: .65em 1.8em;
+  font-size: .9rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: opacity .18s, transform .12s;
+  letter-spacing: .02em;
+}
+
+.rsp-submit-btn:disabled {
+  opacity: .45;
+  cursor: not-allowed;
+}
+
+.rsp-submit-btn:not(:disabled):hover {
+  opacity: .88;
+  transform: translateY(-1px);
+}
+
+/* ── Notice ───────────────────────────────────────────────────────────────── */
+
+.rsp-form-notice {
+  margin-top: .75rem;
+  font-size: .85rem;
+  min-height: 1.2em;
+  font-weight: 600;
+}
+
+.rsp-form-notice.rsp-notice--success { color: #16a34a; }
+.rsp-form-notice.rsp-notice--error   { color: #dc2626; }
+
+/* ── Login prompt ─────────────────────────────────────────────────────────── */
+
+.rsp-login-prompt {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.rsp-login-prompt p {
+  margin: 0;
+  color: var(--rsp-muted);
+  font-size: .9rem;
+}
+
+.rsp-login-btn {
+  background: var(--rsp-star) !important;
+  color: #fff !important;
+  border-radius: 8px !important;
+  padding: .5em 1.4em !important;
+  font-weight: 700 !important;
+  text-decoration: none !important;
+  font-size: .85rem !important;
+  border: none !important;
+  transition: opacity .18s !important;
+}
+
+.rsp-login-btn:hover {
+  opacity: .85 !important;
+}
+
+/* ── Responsive ───────────────────────────────────────────────────────────── */
+
+@media (max-width: 480px) {
+  .rsp-rate-form-wrap {
+    padding: 1.25rem;
+  }
+  .rsp-star-picker label {
+    font-size: 2rem;
+  }
+}

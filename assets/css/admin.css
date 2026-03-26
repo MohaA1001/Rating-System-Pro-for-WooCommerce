@@ -1,0 +1,201 @@
+/* ==========================================================================
+   Rating System Pro – Admin Styles
+   ========================================================================== */
+
+/* Wrap */
+.rsp-settings-wrap {
+  max-width: 960px;
+  margin: 20px auto 40px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+.rsp-settings-title {
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+  font-size: 1.6rem !important;
+  margin-bottom: 1.5rem !important;
+}
+
+.rsp-logo {
+  font-size: 1.4rem;
+}
+
+.rsp-version {
+  font-size: .75rem;
+  font-weight: 400;
+  color: #888;
+  background: #f0f0f0;
+  border-radius: 4px;
+  padding: 2px 8px;
+}
+
+/* Grid */
+.rsp-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 20px;
+  margin-bottom: 24px;
+}
+
+/* Card */
+.rsp-card {
+  background: #fff;
+  border: 1px solid #e0e0e0;
+  border-radius: 10px;
+  padding: 20px 24px;
+  box-shadow: 0 2px 8px rgba(0,0,0,.04);
+}
+
+.rsp-card h2 {
+  font-size: 1rem;
+  margin: 0 0 16px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #f0f0f0;
+  color: #1a1a2e;
+}
+
+/* Field */
+.rsp-field {
+  margin-bottom: 14px;
+}
+
+.rsp-field label {
+  display: block;
+  font-weight: 600;
+  font-size: .85rem;
+  margin-bottom: 5px;
+  color: #333;
+}
+
+.rsp-field .description {
+  font-size: .78rem;
+  color: #888;
+  margin-top: 4px;
+}
+
+/* Toggle */
+.rsp-toggle-field {
+  margin-bottom: 12px;
+}
+
+.rsp-toggle {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+}
+
+.rsp-toggle input[type="checkbox"] {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.rsp-slider {
+  position: relative;
+  display: inline-block;
+  width: 42px;
+  height: 24px;
+  background: #ccc;
+  border-radius: 999px;
+  transition: background .25s;
+  flex-shrink: 0;
+}
+
+.rsp-slider::before {
+  content: '';
+  position: absolute;
+  left: 3px;
+  top: 3px;
+  width: 18px;
+  height: 18px;
+  background: #fff;
+  border-radius: 50%;
+  transition: transform .25s;
+  box-shadow: 0 1px 4px rgba(0,0,0,.2);
+}
+
+.rsp-toggle input:checked + .rsp-slider {
+  background: #2271b1;
+}
+
+.rsp-toggle input:checked + .rsp-slider::before {
+  transform: translateX(18px);
+}
+
+.rsp-toggle-label {
+  font-weight: 600;
+  font-size: .85rem;
+  color: #1a1a2e;
+}
+
+/* Submit */
+.rsp-settings-wrap .submit {
+  margin-top: 8px;
+}
+
+.rsp-settings-wrap .button-primary {
+  padding: 8px 28px;
+  font-size: .9rem;
+}
+
+/* ── Product meta box ─────────────────────────────────────────────────── */
+
+.rsp-meta-box {
+  padding: 4px 0;
+}
+
+.rsp-meta-override {
+  margin-bottom: 16px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid #f0f0f0;
+  font-size: .85rem;
+}
+
+.rsp-meta-stars {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 10px;
+  margin-bottom: 14px;
+}
+
+.rsp-meta-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: .85rem;
+}
+
+.rsp-meta-row label {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  min-width: 90px;
+  font-weight: 600;
+}
+
+.rsp-meta-stars-icon {
+  color: #f5a623;
+  font-size: .9em;
+  letter-spacing: -2px;
+}
+
+.rsp-star-input {
+  width: 64px !important;
+}
+
+.rsp-meta-preview {
+  background: #f9f9f9;
+  border-radius: 6px;
+  padding: 8px 12px;
+  font-size: .83rem;
+  color: #555;
+}
+
+.rsp-meta-average,
+.rsp-meta-total {
+  font-weight: 700;
+  color: #1a1a2e;
+}
