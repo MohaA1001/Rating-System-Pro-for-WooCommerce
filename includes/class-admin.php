@@ -35,8 +35,8 @@ class RSP_Admin {
 	public function register_menu(): void {
 		add_submenu_page(
 			'woocommerce',
-			__( 'Rating System Pro', 'rating-system-pro' ),
-			__( 'Rating System', 'rating-system-pro' ),
+			__( 'Rating System Pro', 'rating-system-pro-for-woocommerce' ),
+			__( 'Rating System', 'rating-system-pro-for-woocommerce' ),
 			'manage_woocommerce',
 			'rsp-settings',
 			[ $this, 'render_settings_page' ]
@@ -61,7 +61,7 @@ class RSP_Admin {
 
 		add_action( 'admin_notices', function () {
 			echo '<div class="notice notice-success is-dismissible"><p>'
-				. esc_html__( 'Settings saved.', 'rating-system-pro' )
+				. esc_html__( 'Settings saved.', 'rating-system-pro-for-woocommerce' )
 				. '</p></div>';
 		} );
 	}
@@ -102,7 +102,7 @@ class RSP_Admin {
 	 */
 	public function render_settings_page(): void {
 		if ( ! current_user_can( 'manage_woocommerce' ) ) {
-			wp_die( esc_html__( 'Permission denied.', 'rating-system-pro' ) );
+			wp_die( esc_html__( 'Permission denied.', 'rating-system-pro-for-woocommerce' ) );
 		}
 
 		$s = $this->settings->all();
@@ -110,7 +110,7 @@ class RSP_Admin {
 		<div class="wrap rsp-settings-wrap">
 			<h1 class="rsp-settings-title">
 				<span class="rsp-logo">⭐</span>
-				<?php esc_html_e( 'Rating System Pro', 'rating-system-pro' ); ?>
+				<?php esc_html_e( 'Rating System Pro', 'rating-system-pro-for-woocommerce' ); ?>
 				<span class="rsp-version">v<?php echo esc_html( RSP_VERSION ); ?></span>
 			</h1>
 
@@ -122,31 +122,31 @@ class RSP_Admin {
 
 					<!-- General Settings -->
 					<div class="rsp-card">
-						<h2><?php esc_html_e( 'General Settings', 'rating-system-pro' ); ?></h2>
+						<h2><?php esc_html_e( 'General Settings', 'rating-system-pro-for-woocommerce' ); ?></h2>
 
-						<?php $this->render_toggle( 'stars_only_mode', __( 'Stars Only Mode', 'rating-system-pro' ), __( 'Remove review textarea; accept star ratings only.', 'rating-system-pro' ), $s['stars_only_mode'] ); ?>
-						<?php $this->render_toggle( 'enable_manual_dist', __( 'Enable Manual Distribution', 'rating-system-pro' ), __( 'Use manually entered star counts for display.', 'rating-system-pro' ), $s['enable_manual_dist'] ); ?>
-						<?php $this->render_toggle( 'show_breakdown', __( 'Show Rating Breakdown', 'rating-system-pro' ), __( 'Display Amazon-style progress bars on product pages.', 'rating-system-pro' ), $s['show_breakdown'] ); ?>
-						<?php $this->render_toggle( 'show_in_shop', __( 'Show on Shop Page', 'rating-system-pro' ), __( 'Display ratings after product names on the shop page.', 'rating-system-pro' ), $s['show_in_shop'] ); ?>
-						<?php $this->render_toggle( 'show_average', __( 'Show Average Rating', 'rating-system-pro' ), __( 'Display the computed average and total count.', 'rating-system-pro' ), $s['show_average'] ); ?>
+						<?php $this->render_toggle( 'stars_only_mode', __( 'Stars Only Mode', 'rating-system-pro-for-woocommerce' ), __( 'Remove review textarea; accept star ratings only.', 'rating-system-pro-for-woocommerce' ), $s['stars_only_mode'] ); ?>
+						<?php $this->render_toggle( 'enable_manual_dist', __( 'Enable Manual Distribution', 'rating-system-pro-for-woocommerce' ), __( 'Use manually entered star counts for display.', 'rating-system-pro-for-woocommerce' ), $s['enable_manual_dist'] ); ?>
+						<?php $this->render_toggle( 'show_breakdown', __( 'Show Rating Breakdown', 'rating-system-pro-for-woocommerce' ), __( 'Display Amazon-style progress bars on product pages.', 'rating-system-pro-for-woocommerce' ), $s['show_breakdown'] ); ?>
+						<?php $this->render_toggle( 'show_in_shop', __( 'Show on Shop Page', 'rating-system-pro-for-woocommerce' ), __( 'Display ratings after product names on the shop page.', 'rating-system-pro-for-woocommerce' ), $s['show_in_shop'] ); ?>
+						<?php $this->render_toggle( 'show_average', __( 'Show Average Rating', 'rating-system-pro-for-woocommerce' ), __( 'Display the computed average and total count.', 'rating-system-pro-for-woocommerce' ), $s['show_average'] ); ?>
 					</div>
 
 					<!-- Badge Settings -->
 					<div class="rsp-card">
-						<h2><?php esc_html_e( 'Top Rated Badge', 'rating-system-pro' ); ?></h2>
+						<h2><?php esc_html_e( 'Top Rated Badge', 'rating-system-pro-for-woocommerce' ); ?></h2>
 
-						<?php $this->render_toggle( 'badge_enabled', __( 'Enable Badge', 'rating-system-pro' ), __( 'Show a badge on products that exceed the threshold.', 'rating-system-pro' ), $s['badge_enabled'] ); ?>
+						<?php $this->render_toggle( 'badge_enabled', __( 'Enable Badge', 'rating-system-pro-for-woocommerce' ), __( 'Show a badge on products that exceed the threshold.', 'rating-system-pro-for-woocommerce' ), $s['badge_enabled'] ); ?>
 
 						<div class="rsp-field">
-							<label for="rsp_badge_threshold"><?php esc_html_e( 'Badge Threshold', 'rating-system-pro' ); ?></label>
+							<label for="rsp_badge_threshold"><?php esc_html_e( 'Badge Threshold', 'rating-system-pro-for-woocommerce' ); ?></label>
 							<input type="number" id="rsp_badge_threshold" name="badge_threshold"
 								   value="<?php echo esc_attr( $s['badge_threshold'] ); ?>"
 								   min="1" max="5" step="0.1" class="small-text">
-							<p class="description"><?php esc_html_e( 'Show badge when average rating ≥ this value (1–5).', 'rating-system-pro' ); ?></p>
+							<p class="description"><?php esc_html_e( 'Show badge when average rating ≥ this value (1–5).', 'rating-system-pro-for-woocommerce' ); ?></p>
 						</div>
 
 						<div class="rsp-field">
-							<label for="rsp_badge_text"><?php esc_html_e( 'Badge Text', 'rating-system-pro' ); ?></label>
+							<label for="rsp_badge_text"><?php esc_html_e( 'Badge Text', 'rating-system-pro-for-woocommerce' ); ?></label>
 							<input type="text" id="rsp_badge_text" name="badge_text"
 								   value="<?php echo esc_attr( $s['badge_text'] ); ?>" class="regular-text">
 						</div>
@@ -154,46 +154,46 @@ class RSP_Admin {
 
 					<!-- Rating Form Settings -->
 					<div class="rsp-card">
-						<h2><?php esc_html_e( 'Rating Form', 'rating-system-pro' ); ?></h2>
+						<h2><?php esc_html_e( 'Rating Form', 'rating-system-pro-for-woocommerce' ); ?></h2>
 
-						<?php $this->render_toggle( 'enable_rating_form', __( 'Enable Rating Form', 'rating-system-pro' ), __( 'Show a star rating form inside the Ratings tab.', 'rating-system-pro' ), $s['enable_rating_form'] ); ?>
-						<?php $this->render_toggle( 'allow_guest_rating', __( 'Allow Guest Ratings', 'rating-system-pro' ), __( 'Let visitors rate without logging in (tracked by session).', 'rating-system-pro' ), $s['allow_guest_rating'] ); ?>
+						<?php $this->render_toggle( 'enable_rating_form', __( 'Enable Rating Form', 'rating-system-pro-for-woocommerce' ), __( 'Show a star rating form inside the Ratings tab.', 'rating-system-pro-for-woocommerce' ), $s['enable_rating_form'] ); ?>
+						<?php $this->render_toggle( 'allow_guest_rating', __( 'Allow Guest Ratings', 'rating-system-pro-for-woocommerce' ), __( 'Let visitors rate without logging in (tracked by session).', 'rating-system-pro-for-woocommerce' ), $s['allow_guest_rating'] ); ?>
 
 						<div class="rsp-field">
-							<label for="rsp_rating_form_title"><?php esc_html_e( 'Form Title', 'rating-system-pro' ); ?></label>
+							<label for="rsp_rating_form_title"><?php esc_html_e( 'Form Title', 'rating-system-pro-for-woocommerce' ); ?></label>
 							<input type="text" id="rsp_rating_form_title" name="rating_form_title"
 								   value="<?php echo esc_attr( $s['rating_form_title'] ); ?>" class="regular-text">
 						</div>
 
 						<div class="rsp-field">
-							<label for="rsp_rating_success_msg"><?php esc_html_e( 'Success Message', 'rating-system-pro' ); ?></label>
+							<label for="rsp_rating_success_msg"><?php esc_html_e( 'Success Message', 'rating-system-pro-for-woocommerce' ); ?></label>
 							<input type="text" id="rsp_rating_success_msg" name="rating_success_msg"
 								   value="<?php echo esc_attr( $s['rating_success_msg'] ); ?>" class="regular-text">
 						</div>
 
 						<div class="rsp-field">
-							<label for="rsp_rating_login_msg"><?php esc_html_e( 'Login Required Message', 'rating-system-pro' ); ?></label>
+							<label for="rsp_rating_login_msg"><?php esc_html_e( 'Login Required Message', 'rating-system-pro-for-woocommerce' ); ?></label>
 							<input type="text" id="rsp_rating_login_msg" name="rating_login_msg"
 								   value="<?php echo esc_attr( $s['rating_login_msg'] ); ?>" class="regular-text">
-							<p class="description"><?php esc_html_e( 'Shown to guests when Allow Guest Ratings is OFF.', 'rating-system-pro' ); ?></p>
+							<p class="description"><?php esc_html_e( 'Shown to guests when Allow Guest Ratings is OFF.', 'rating-system-pro-for-woocommerce' ); ?></p>
 						</div>
 					</div>
 
 					<!-- Color Settings -->
 					<div class="rsp-card">
-						<h2><?php esc_html_e( 'Colors', 'rating-system-pro' ); ?></h2>
+						<h2><?php esc_html_e( 'Colors', 'rating-system-pro-for-woocommerce' ); ?></h2>
 
-						<?php $this->render_color( 'color_stars', __( 'Star Color', 'rating-system-pro' ), $s['color_stars'] ); ?>
-						<?php $this->render_color( 'color_bars', __( 'Progress Bar Color', 'rating-system-pro' ), $s['color_bars'] ); ?>
-						<?php $this->render_color( 'color_badge_bg', __( 'Badge Background', 'rating-system-pro' ), $s['color_badge_bg'] ); ?>
-						<?php $this->render_color( 'color_badge_text', __( 'Badge Text Color', 'rating-system-pro' ), $s['color_badge_text'] ); ?>
+						<?php $this->render_color( 'color_stars', __( 'Star Color', 'rating-system-pro-for-woocommerce' ), $s['color_stars'] ); ?>
+						<?php $this->render_color( 'color_bars', __( 'Progress Bar Color', 'rating-system-pro-for-woocommerce' ), $s['color_bars'] ); ?>
+						<?php $this->render_color( 'color_badge_bg', __( 'Badge Background', 'rating-system-pro-for-woocommerce' ), $s['color_badge_bg'] ); ?>
+						<?php $this->render_color( 'color_badge_text', __( 'Badge Text Color', 'rating-system-pro-for-woocommerce' ), $s['color_badge_text'] ); ?>
 					</div>
 
 				</div><!-- /.rsp-grid -->
 
 				<p class="submit">
 					<button type="submit" class="button button-primary button-large">
-						<?php esc_html_e( 'Save Settings', 'rating-system-pro' ); ?>
+						<?php esc_html_e( 'Save Settings', 'rating-system-pro-for-woocommerce' ); ?>
 					</button>
 				</p>
 			</form>
@@ -241,7 +241,7 @@ class RSP_Admin {
 	public function add_product_meta_box(): void {
 		add_meta_box(
 			'rsp-product-ratings',
-			__( '⭐ Manual Rating Distribution', 'rating-system-pro' ),
+			__( '⭐ Manual Rating Distribution', 'rating-system-pro-for-woocommerce' ),
 			[ $this, 'render_product_meta_box' ],
 			'product',
 			'normal',
@@ -266,7 +266,7 @@ class RSP_Admin {
 			<div class="rsp-meta-override">
 				<label>
 					<input type="checkbox" name="rsp_override" value="yes" <?php checked( $override, true ); ?>>
-					<?php esc_html_e( 'Override global settings for this product', 'rating-system-pro' ); ?>
+					<?php esc_html_e( 'Override global settings for this product', 'rating-system-pro-for-woocommerce' ); ?>
 				</label>
 			</div>
 
@@ -276,7 +276,7 @@ class RSP_Admin {
 						<label for="rsp_stars_<?php echo esc_attr( $star ); ?>">
 							<?php
 							/* translators: %d: number of stars */
-							echo esc_html( sprintf( _n( '%d Star', '%d Stars', $star, 'rating-system-pro' ), $star ) );
+							echo esc_html( sprintf( _n( '%d Star', '%d Stars', $star, 'rating-system-pro-for-woocommerce' ), $star ) );
 							?>
 							<span class="rsp-meta-stars-icon">
 								<?php echo esc_html( str_repeat( '★', $star ) ); ?>
@@ -291,11 +291,11 @@ class RSP_Admin {
 			</div>
 
 			<div class="rsp-meta-preview">
-				<strong><?php esc_html_e( 'Computed Preview:', 'rating-system-pro' ); ?></strong>
+				<strong><?php esc_html_e( 'Computed Preview:', 'rating-system-pro-for-woocommerce' ); ?></strong>
 				<span class="rsp-meta-average"><?php echo esc_html( $data['average'] ); ?></span>
-				<?php esc_html_e( 'out of 5 —', 'rating-system-pro' ); ?>
+				<?php esc_html_e( 'out of 5 —', 'rating-system-pro-for-woocommerce' ); ?>
 				<span class="rsp-meta-total"><?php echo esc_html( number_format_i18n( $data['total'] ) ); ?></span>
-				<?php esc_html_e( 'ratings', 'rating-system-pro' ); ?>
+				<?php esc_html_e( 'ratings', 'rating-system-pro-for-woocommerce' ); ?>
 			</div>
 
 		</div>
@@ -344,7 +344,7 @@ class RSP_Admin {
 		$settings_link = sprintf(
 			'<a href="%s">%s</a>',
 			esc_url( admin_url( 'admin.php?page=rsp-settings' ) ),
-			esc_html__( 'Settings', 'rating-system-pro' )
+			esc_html__( 'Settings', 'rating-system-pro-for-woocommerce' )
 		);
 		array_unshift( $links, $settings_link );
 		return $links;

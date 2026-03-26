@@ -8,7 +8,7 @@
  * Author URI:        https://github.com/MohaA1001
  * License:           GPL-2.0+
  * License URI:       https://www.gnu.org/licenses/gpl-2.0.html
- * Text Domain:       rating-system-pro
+ * Text Domain:       rating-system-pro-for-woocommerce
  * Domain Path:       /languages
  * Requires at least: 5.8
  * Requires PHP:      7.4
@@ -90,7 +90,7 @@ function rsp_maybe_deactivate() {
 
 	add_action( 'admin_notices', function () {
 		echo '<div class="notice notice-error"><p>';
-		echo esc_html__( 'Rating System Pro has been deactivated because WooCommerce is required.', 'rating-system-pro' );
+		echo esc_html__( 'Rating System Pro has been deactivated because WooCommerce is required.', 'rating-system-pro-for-woocommerce' );
 		echo '</p></div>';
 	});
 }

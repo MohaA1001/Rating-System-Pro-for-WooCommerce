@@ -72,8 +72,8 @@ class RSP_Frontend {
 			'nonce'       => wp_create_nonce( 'rsp_submit_rating' ),
 			'is_logged_in'=> is_user_logged_in() ? '1' : '0',
 			'allow_guest' => $this->settings->is_enabled( 'allow_guest_rating' ) ? '1' : '0',
-			'login_msg'   => esc_html( $this->settings->get( 'rating_login_msg', __( 'Please log in to rate this product.', 'rating-system-pro' ) ) ),
-			'success_msg' => esc_html( $this->settings->get( 'rating_success_msg', __( 'Thank you for your rating!', 'rating-system-pro' ) ) ),
+			'login_msg'   => esc_html( $this->settings->get( 'rating_login_msg', __( 'Please log in to rate this product.', 'rating-system-pro-for-woocommerce' ) ) ),
+			'success_msg' => esc_html( $this->settings->get( 'rating_success_msg', __( 'Thank you for your rating!', 'rating-system-pro-for-woocommerce' ) ) ),
 			'login_url'   => esc_url( wc_get_page_permalink( 'myaccount' ) ),
 		] );
 	}
@@ -123,8 +123,8 @@ class RSP_Frontend {
 		$tabs['rsp-ratings'] = [
 			'title'    => $data['total'] > 0
 				/* translators: %s: average rating */
-				? sprintf( __( 'Ratings (%s★)', 'rating-system-pro' ), $data['average'] )
-				: __( 'Ratings', 'rating-system-pro' ),
+				? sprintf( __( 'Ratings (%s★)', 'rating-system-pro-for-woocommerce' ), $data['average'] )
+				: __( 'Ratings', 'rating-system-pro-for-woocommerce' ),
 			'priority' => 25,
 			'callback' => [ $this, 'render_ratings_tab_content' ],
 		];
@@ -147,7 +147,7 @@ class RSP_Frontend {
 		return sprintf(
 			'<div class="rsp-inline-rating" title="%s">%s<span class="rsp-inline-count">(%s)</span></div>',
 			/* translators: 1: average rating, 2: total ratings count */
-			esc_attr( sprintf( __( 'Rated %1$s out of 5 — %2$s ratings', 'rating-system-pro' ), $data['average'], $data['total'] ) ),
+			esc_attr( sprintf( __( 'Rated %1$s out of 5 — %2$s ratings', 'rating-system-pro-for-woocommerce' ), $data['average'], $data['total'] ) ),
 			$this->stars_html( $data['average'] ),
 			esc_html( number_format_i18n( $data['total'] ) )
 		);
@@ -198,20 +198,20 @@ class RSP_Frontend {
 			 role="button" tabindex="0" data-rsp-tab="rsp-ratings"
 			 data-product-url="<?php echo esc_url( get_permalink( $product->get_id() ) ); ?>"
 			 <?php /* translators: %s: average rating */ ?>
-			 aria-label="<?php echo esc_attr( sprintf( __( 'See all ratings — %s out of 5', 'rating-system-pro' ), $average ) ); ?>">
+			 aria-label="<?php echo esc_attr( sprintf( __( 'See all ratings — %s out of 5', 'rating-system-pro-for-woocommerce' ), $average ) ); ?>">
 
 			<span class="rsp-mini-average"><?php echo esc_html( $average ); ?></span>
 			<span class="rsp-mini-stars"><?php echo $this->stars_html( $average ); // phpcs:ignore ?></span>
 			<span class="rsp-mini-count">
 				<?php echo esc_html( number_format_i18n( $total_ratings ) ); ?>
-				<?php esc_html_e( 'ratings', 'rating-system-pro' ); ?>
+				<?php esc_html_e( 'ratings', 'rating-system-pro-for-woocommerce' ); ?>
 			</span>
 			<span class="rsp-mini-arrow">›</span>
 
 			<?php if ( $show_badge && is_singular( 'product' ) ) : ?>
 				<span class="rsp-badge rsp-badge--inline">
 					<span class="rsp-badge-icon">🏆</span>
-					<?php echo esc_html( $this->settings->get( 'badge_text', __( 'Top Rated', 'rating-system-pro' ) ) ); ?>
+					<?php echo esc_html( $this->settings->get( 'badge_text', __( 'Top Rated', 'rating-system-pro-for-woocommerce' ) ) ); ?>
 				</span>
 			<?php endif; ?>
 		</div>
@@ -244,7 +244,7 @@ class RSP_Frontend {
 			return;
 		}
 
-		$badge_text = $this->settings->get( 'badge_text', __( 'Top Rated', 'rating-system-pro' ) );
+		$badge_text = $this->settings->get( 'badge_text', __( 'Top Rated', 'rating-system-pro-for-woocommerce' ) );
 		?>
 		<div class="rsp-shop-badge-overlay">
 			<span class="rsp-badge">
@@ -281,7 +281,7 @@ class RSP_Frontend {
 					<?php if ( $show_badge ) : ?>
 						<div class="rsp-badge rsp-badge--tab">
 							<span class="rsp-badge-icon">🏆</span>
-							<?php echo esc_html( $this->settings->get( 'badge_text', __( 'Top Rated', 'rating-system-pro' ) ) ); ?>
+							<?php echo esc_html( $this->settings->get( 'badge_text', __( 'Top Rated', 'rating-system-pro-for-woocommerce' ) ) ); ?>
 						</div>
 					<?php endif; ?>
 
@@ -292,9 +292,9 @@ class RSP_Frontend {
 								<div class="rsp-average-number"><?php echo esc_html( $data['average'] ); ?></div>
 								<div class="rsp-average-stars"><?php echo $this->stars_html( $data['average'] ); // phpcs:ignore ?></div>
 								<div class="rsp-average-label">
-									<?php echo esc_html( number_format_i18n( $data['total'] ) . ' ' . __( 'ratings', 'rating-system-pro' ) ); ?>
+									<?php echo esc_html( number_format_i18n( $data['total'] ) . ' ' . __( 'ratings', 'rating-system-pro-for-woocommerce' ) ); ?>
 								</div>
-								<div class="rsp-average-outof"><?php esc_html_e( 'out of 5', 'rating-system-pro' ); ?></div>
+								<div class="rsp-average-outof"><?php esc_html_e( 'out of 5', 'rating-system-pro-for-woocommerce' ); ?></div>
 							</div>
 						<?php endif; ?>
 
@@ -326,7 +326,7 @@ class RSP_Frontend {
 				<div class="rsp-rate-form-wrap">
 
 					<h3 class="rsp-rate-form-title">
-						<?php echo esc_html( $this->settings->get( 'rating_form_title', __( 'Rate this product', 'rating-system-pro' ) ) ); ?>
+						<?php echo esc_html( $this->settings->get( 'rating_form_title', __( 'Rate this product', 'rating-system-pro-for-woocommerce' ) ) ); ?>
 					</h3>
 
 					<?php if ( $is_logged_in || $allow_guest ) : ?>
@@ -334,20 +334,20 @@ class RSP_Frontend {
 						<form class="rsp-rate-form" id="rsp-rate-form"
 							  data-product="<?php echo esc_attr( $product->get_id() ); ?>">
 
-							<div class="rsp-star-picker" id="rsp-star-picker" role="radiogroup" aria-label="<?php esc_attr_e( 'Star rating', 'rating-system-pro' ); ?>">
+							<div class="rsp-star-picker" id="rsp-star-picker" role="radiogroup" aria-label="<?php esc_attr_e( 'Star rating', 'rating-system-pro-for-woocommerce' ); ?>">
 								<?php for ( $i = 5; $i >= 1; $i-- ) : ?>
 									<input type="radio" name="rsp_star" id="rsp_star_<?php echo esc_attr( $i ); ?>"
 										   value="<?php echo esc_attr( $i ); ?>" class="rsp-star-radio">
 									<label for="rsp_star_<?php echo esc_attr( $i ); ?>"
 										   <?php /* translators: %d: number of stars */ ?>
-										   title="<?php echo esc_attr( sprintf( _n( '%d star', '%d stars', $i, 'rating-system-pro' ), $i ) ); ?>">★</label>
+										   title="<?php echo esc_attr( sprintf( _n( '%d star', '%d stars', $i, 'rating-system-pro-for-woocommerce' ), $i ) ); ?>">★</label>
 								<?php endfor; ?>
 							</div>
 
 							<p class="rsp-selected-label" id="rsp-selected-label" aria-live="polite"></p>
 
 							<button type="submit" class="rsp-submit-btn" id="rsp-submit-btn" disabled>
-								<?php esc_html_e( 'Submit Rating', 'rating-system-pro' ); ?>
+								<?php esc_html_e( 'Submit Rating', 'rating-system-pro-for-woocommerce' ); ?>
 							</button>
 
 							<p class="rsp-form-notice" id="rsp-form-notice" aria-live="polite"></p>
@@ -358,9 +358,9 @@ class RSP_Frontend {
 
 						<!-- Not logged in + guest not allowed -->
 						<div class="rsp-login-prompt">
-							<p><?php echo esc_html( $this->settings->get( 'rating_login_msg', __( 'Please log in to rate this product.', 'rating-system-pro' ) ) ); ?></p>
+							<p><?php echo esc_html( $this->settings->get( 'rating_login_msg', __( 'Please log in to rate this product.', 'rating-system-pro-for-woocommerce' ) ) ); ?></p>
 							<a href="<?php echo esc_url( wc_get_page_permalink( 'myaccount' ) ); ?>" class="rsp-login-btn button">
-								<?php esc_html_e( 'Log In', 'rating-system-pro' ); ?>
+								<?php esc_html_e( 'Log In', 'rating-system-pro-for-woocommerce' ); ?>
 							</a>
 						</div>
 
@@ -381,7 +381,7 @@ class RSP_Frontend {
 	public function ajax_submit_rating(): void {
 		// Verify nonce
 		if ( ! isset( $_POST['nonce'] ) || ! wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST['nonce'] ) ), 'rsp_submit_rating' ) ) {
-			wp_send_json_error( [ 'message' => __( 'Security check failed.', 'rating-system-pro' ) ] );
+			wp_send_json_error( [ 'message' => __( 'Security check failed.', 'rating-system-pro-for-woocommerce' ) ] );
 		}
 
 		$allow_guest = $this->settings->is_enabled( 'allow_guest_rating' );
@@ -389,21 +389,21 @@ class RSP_Frontend {
 		// Check auth
 		if ( ! is_user_logged_in() && ! $allow_guest ) {
 			wp_send_json_error( [
-				'message' => esc_html( $this->settings->get( 'rating_login_msg', __( 'Please log in to rate this product.', 'rating-system-pro' ) ) ),
+				'message' => esc_html( $this->settings->get( 'rating_login_msg', __( 'Please log in to rate this product.', 'rating-system-pro-for-woocommerce' ) ) ),
 			] );
 		}
 
 		// Validate star value
 		$star = isset( $_POST['star'] ) ? (int) $_POST['star'] : 0;
 		if ( $star < 1 || $star > 5 ) {
-			wp_send_json_error( [ 'message' => __( 'Invalid star rating.', 'rating-system-pro' ) ] );
+			wp_send_json_error( [ 'message' => __( 'Invalid star rating.', 'rating-system-pro-for-woocommerce' ) ] );
 		}
 
 		// Validate product
 		$product_id = isset( $_POST['product_id'] ) ? absint( $_POST['product_id'] ) : 0;
 		$product    = wc_get_product( $product_id );
 		if ( ! $product ) {
-			wp_send_json_error( [ 'message' => __( 'Invalid product.', 'rating-system-pro' ) ] );
+			wp_send_json_error( [ 'message' => __( 'Invalid product.', 'rating-system-pro-for-woocommerce' ) ] );
 		}
 
 		// Duplicate-vote guard (session or user meta)
@@ -412,13 +412,13 @@ class RSP_Frontend {
 
 		if ( $user_id > 0 ) {
 			if ( get_user_meta( $user_id, $voted_key, true ) ) {
-				wp_send_json_error( [ 'message' => __( 'You have already rated this product.', 'rating-system-pro' ) ] );
+				wp_send_json_error( [ 'message' => __( 'You have already rated this product.', 'rating-system-pro-for-woocommerce' ) ] );
 			}
 		} else {
 			// Guest: use session cookie
 			if ( ! session_id() ) { @session_start(); }
 			if ( isset( $_SESSION[ $voted_key ] ) ) {
-				wp_send_json_error( [ 'message' => __( 'You have already rated this product.', 'rating-system-pro' ) ] );
+				wp_send_json_error( [ 'message' => __( 'You have already rated this product.', 'rating-system-pro-for-woocommerce' ) ] );
 			}
 		}
 
@@ -439,7 +439,7 @@ class RSP_Frontend {
 		$new_data = $this->product_meta->get_rating_data( $product_id );
 
 		wp_send_json_success( [
-			'message'  => esc_html( $this->settings->get( 'rating_success_msg', __( 'Thank you for your rating!', 'rating-system-pro' ) ) ),
+			'message'  => esc_html( $this->settings->get( 'rating_success_msg', __( 'Thank you for your rating!', 'rating-system-pro-for-woocommerce' ) ) ),
 			'average'  => $new_data['average'],
 			'total'    => $new_data['total'],
 			'counts'   => $new_data['counts'],
