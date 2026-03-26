@@ -274,9 +274,12 @@ class RSP_Admin {
 				<?php foreach ( RSP_Product_Meta::STAR_KEYS as $star ) : ?>
 					<div class="rsp-meta-row">
 						<label for="rsp_stars_<?php echo esc_attr( $star ); ?>">
-							<?php echo esc_html( sprintf( _n( '%d Star', '%d Stars', $star, 'rating-system-pro' ), $star ) ); ?>
+							<?php
+							/* translators: %d: number of stars */
+							echo esc_html( sprintf( _n( '%d Star', '%d Stars', $star, 'rating-system-pro' ), $star ) );
+							?>
 							<span class="rsp-meta-stars-icon">
-								<?php echo str_repeat( '★', $star ); ?>
+								<?php echo esc_html( str_repeat( '★', $star ) ); ?>
 							</span>
 						</label>
 						<input type="number" id="rsp_stars_<?php echo esc_attr( $star ); ?>"

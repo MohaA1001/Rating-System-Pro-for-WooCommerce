@@ -105,13 +105,6 @@ function rsp_init() {
 		return;
 	}
 
-	// Load translations
-	load_plugin_textdomain(
-		'rating-system-pro',
-		false,
-		dirname( RSP_PLUGIN_BASE ) . '/languages'
-	);
-
 	// Includes
 	require_once RSP_PLUGIN_DIR . 'includes/class-settings.php';
 	require_once RSP_PLUGIN_DIR . 'includes/class-product-meta.php';

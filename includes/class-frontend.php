@@ -122,6 +122,7 @@ class RSP_Frontend {
 
 		$tabs['rsp-ratings'] = [
 			'title'    => $data['total'] > 0
+				/* translators: %s: average rating */
 				? sprintf( __( 'Ratings (%s★)', 'rating-system-pro' ), $data['average'] )
 				: __( 'Ratings', 'rating-system-pro' ),
 			'priority' => 25,
@@ -145,6 +146,7 @@ class RSP_Frontend {
 
 		return sprintf(
 			'<div class="rsp-inline-rating" title="%s">%s<span class="rsp-inline-count">(%s)</span></div>',
+			/* translators: 1: average rating, 2: total ratings count */
 			esc_attr( sprintf( __( 'Rated %1$s out of 5 — %2$s ratings', 'rating-system-pro' ), $data['average'], $data['total'] ) ),
 			$this->stars_html( $data['average'] ),
 			esc_html( number_format_i18n( $data['total'] ) )
@@ -195,6 +197,7 @@ class RSP_Frontend {
 		<div class="rsp-mini-summary" id="rsp-mini-summary"
 			 role="button" tabindex="0" data-rsp-tab="rsp-ratings"
 			 data-product-url="<?php echo esc_url( get_permalink( $product->get_id() ) ); ?>"
+			 <?php /* translators: %s: average rating */ ?>
 			 aria-label="<?php echo esc_attr( sprintf( __( 'See all ratings — %s out of 5', 'rating-system-pro' ), $average ) ); ?>">
 
 			<span class="rsp-mini-average"><?php echo esc_html( $average ); ?></span>
@@ -336,6 +339,7 @@ class RSP_Frontend {
 									<input type="radio" name="rsp_star" id="rsp_star_<?php echo esc_attr( $i ); ?>"
 										   value="<?php echo esc_attr( $i ); ?>" class="rsp-star-radio">
 									<label for="rsp_star_<?php echo esc_attr( $i ); ?>"
+										   <?php /* translators: %d: number of stars */ ?>
 										   title="<?php echo esc_attr( sprintf( _n( '%d star', '%d stars', $i, 'rating-system-pro' ), $i ) ); ?>">★</label>
 								<?php endfor; ?>
 							</div>

@@ -34,6 +34,7 @@ Whether you want to display manual "seed" ratings for new products or offer a st
 2. Click install & activate.
 3. Go to **WooCommerce → Rating System** to configure your global settings and colors.
 4. (Optional) Edit any product to enter manual star counts under the **Manual Rating Distribution** meta box.
+5. (Optional) Go to **WooCommerce → Settings → Products** then **disable**  Enable product reviews.
 
 == Frequently Asked Questions ==
 
@@ -57,4 +58,3 @@ By default, it is designed to replace them for a cleaner UI.
 
 = 1.0.0 =
 *   Initial release.
-
